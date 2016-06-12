@@ -1,4 +1,4 @@
-python-libnmap
+python-libzmap
 ==============
 
 Use cases
