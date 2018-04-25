@@ -1,4 +1,4 @@
-from probes import *
+from .probes import *
 
 
 class ZmapParser(object):

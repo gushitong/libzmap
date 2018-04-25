@@ -4,7 +4,7 @@ import shlex
 import subprocess
 from threading import Thread
 
-from parser import ZmapParser
+from .parser import ZmapParser
 
 
 class ZmapProcess(Thread):
