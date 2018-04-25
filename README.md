@@ -25,12 +25,18 @@ cd python-libzmap && python setup.py install
 Use case
 -------
 
-```python
-from libzmap import ZmapProcess
-
-proc = ZmapProcess(targets='101.200.188.97/20', options='-B 100M', probe_module='icmp_echoscan')
-for obj in proc.run():
-    print vars(obj)
+```bash
+>>> from libzmap import ZmapProcess
+>>> 
+>>> proc = ZmapProcess(targets='101.200.188.97/20', options='-B 100M', probe_module='icmp_echoscan')
+>>> for obj in proc.run():
+...     print vars(obj)
+... 
+{'daddr': '172.30.8.34', 'code': '0', 'timestamp_ts': '1524630534', 'classification': 'echoreply', 'seq': '0', 'timestamp_us': '196136\n', 'saddr': '101.200.178.99', 'success': '1', 'icmp_id': '50011', 'saddr_raw': '1672661093', 'repeat': '0', 'ttl': '52', 'ipid': '20469', 'daddr_raw': '570957484', 'type': '0', 'cooldown': '1', 'timestamp_str': '2018-04-25T12:28:54.196+0800'}
+{'daddr': '172.30.8.34', 'code': '0', 'timestamp_ts': '1524630534', 'classification': 'echoreply', 'seq': '0', 'timestamp_us': '196183\n', 'saddr': '101.200.176.161', 'success': '1', 'icmp_id': '25116', 'saddr_raw': '2712717413', 'repeat': '0', 'ttl': '52', 'ipid': '38111', 'daddr_raw': '570957484', 'type': '0', 'cooldown': '1', 'timestamp_str': '2018-04-25T12:28:54.196+0800'}
+{'daddr': '172.30.8.34', 'code': '0', 'timestamp_ts': '1524630534', 'classification': 'echoreply', 'seq': '0', 'timestamp_us': '196199\n', 'saddr': '101.200.188.190', 'success': '1', 'icmp_id': '9652', 'saddr_raw': '3200043109', 'repeat': '0', 'ttl': '52', 'ipid': '45756', 'daddr_raw': '570957484', 'type': '0', 'cooldown': '1', 'timestamp_str': '2018-04-25T12:28:54.196+0800'}
+{'daddr': '172.30.8.34', 'code': '0', 'timestamp_ts': '1524630534', 'classification': 'echoreply', 'seq': '0', 'timestamp_us': '196216\n', 'saddr': '101.200.177.21', 'success': '1', 'icmp_id': '59041', 'saddr_raw': '363972709', 'repeat': '0', 'ttl': '52', 'ipid': '63177', 'daddr_raw': '570957484', 'type': '0', 'cooldown': '1', 'timestamp_str': '2018-04-25T12:28:54.196+0800'}
+...
 ```
 
 
