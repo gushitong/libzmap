@@ -70,3 +70,6 @@ class Upnp(object):
         self.timestamp_ts = timestamp_ts
         self.timestamp_us = timestamp_us
 
+    def __str__(self):
+        return str(self.__dict__)
+

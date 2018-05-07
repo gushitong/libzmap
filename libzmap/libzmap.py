@@ -8,13 +8,14 @@ from .parser import ZmapParser
 
 
 class ZmapProcess(Thread):
-    def __init__(self, targets='127.0.0.1', port=80, probe_module=None, options=None, fqp=None):
+    def __init__(self, targets='127.0.0.1', port=80, probe_module=None, options=None, fqp=None, yield_raw=False):
         """
 
         :param targets:
         :param port:
         :param options:
         :param fqp:
+        :param yield_raw:
         """
         Thread.__init__(self)
         self.__zmap_targets = targets
@@ -31,6 +32,7 @@ class ZmapProcess(Thread):
         self.__zmap_binary = None
         self.__zmap_probe_module = probe_module if probe_module else 'tcp_synscan'
         self.__zmap_parser = ZmapParser(self.__zmap_probe_module)
+        self.__yield_raw = yield_raw
 
         # more reliable than just using os.name() (cygwin)
         self.__is_windows = platform.system() == 'Windows'
@@ -93,9 +95,12 @@ class ZmapProcess(Thread):
 
         while self.__zmap_proc.poll() is None:
             for streamline in iter(self.__zmap_proc.stdout.readline, ''):
-                obj = self.parser.parse_line(streamline)
-                if obj:
-                    yield obj
+                if self.__yield_raw:
+                    yield streamline
+                else:
+                    obj = self.parser.parse_line(streamline)
+                    if obj:
+                        yield obj
 
         self.__stderr += self.__zmap_proc.stderr.read()
         # print self.__stderr

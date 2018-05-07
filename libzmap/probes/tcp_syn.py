@@ -48,4 +48,4 @@ class TcpSyn(object):
         self.timestamp_us = timestamp_us
 
     def __str__(self):
-        return "%s: %s" % (self.daddr, self.success)
+        return str(self.__dict__)

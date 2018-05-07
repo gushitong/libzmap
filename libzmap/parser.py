@@ -23,7 +23,6 @@ class ZmapParser(object):
         if any(k in self.zmapkeywords for k in qs):
             return None
         return self.probe_module(*tuple(qs))
-
     def parse_csv(self):
         pass
 
