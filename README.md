@@ -52,7 +52,7 @@ ZmapProcess Args
 Python Support
 --------------
 
-The libnmap code is tested against the following python interpreters:
+The libzmap code is tested against the following python interpreters:
 
 - Python 2.7 (Test on ubuntu-15.10 with zmap-2.1.0);
 
